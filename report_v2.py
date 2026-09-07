@@ -5,11 +5,18 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 NOW = datetime(2026, 9, 5, tzinfo=timezone.utc)
 
+# 优先读仓库里的脱敏数据集；本地有原始抓取结果时用原始的（多出名称等字段）。
+import os
+ANON = not os.path.exists("data/startups.jsonl")
+SRC  = "data/startups-anon.jsonl" if ANON else "data/startups.jsonl"
+KEY  = "id" if ANON else "slug"
 rows=[]; seen=set()
-for l in open("data/startups.jsonl"):
+for l in open(SRC):
     r=json.loads(l)
-    if r["slug"] in seen: continue
-    seen.add(r["slug"]); rows.append(r)
+    if r[KEY] in seen: continue
+    seen.add(r[KEY]); rows.append(r)
+nm = lambda r: r.get("name") or r[KEY]          # 脱敏版没有名字，退回哈希 id
+fid = lambda r: r.get("xHandle") or r.get("founder_id")
 N=len(rows)
 g=lambda r,k:(r["revenue"].get(k) or 0)
 mrr=lambda r:g(r,"mrr"); l30=lambda r:g(r,"last30Days"); tot=lambda r:g(r,"total")
@@ -17,17 +24,17 @@ pct=lambda a,b: f"{a/b*100:.1f}%" if b else "—"
 M=lambda x:f"${x:,.0f}"
 
 # 陈旧头部
-hf=json.load(open("data/head_freshness.json"))
-stale={h["slug"] for h in hf if h["expired"] or (h["days"] or 0)>30}
+hf=json.load(open("data/head_freshness-anon.json" if ANON else "data/head_freshness.json"))
+stale={h[KEY] for h in hf if h["expired"] or (h["days"] or 0)>30}
 print("=== 0 基础 ===")
 print("N",N,"MRR",M(sum(map(mrr,rows))),"30d",M(sum(map(l30,rows))),"total",M(sum(map(tot,rows))))
 never=[r for r in rows if tot(r)==0 and mrr(r)==0 and l30(r)==0]
 print("从未赚过(严格)",len(never),pct(len(never),N))
 print("曾赚过",sum(1 for r in rows if tot(r)>0),pct(sum(1 for r in rows if tot(r)>0),N))
 print("近30天在赚",sum(1 for r in rows if l30(r)>0),pct(sum(1 for r in rows if l30(r)>0),N))
-w5=[r for r in rows if mrr(r)>=5000]; w5c=[r for r in w5 if r["slug"] not in stale]
+w5=[r for r in rows if mrr(r)>=5000]; w5c=[r for r in w5 if r[KEY] not in stale]
 print("MRR≥5k 原始",len(w5),pct(len(w5),N),"清洗后",len(w5c),pct(len(w5c),N))
-d5=[r for r in rows if l30(r)>=5000]; d5c=[r for r in d5 if r["slug"] not in stale]
+d5=[r for r in rows if l30(r)>=5000]; d5c=[r for r in d5 if r[KEY] not in stale]
 print("30d≥5k 原始",len(d5),pct(len(d5),N),"清洗后(仅剔头部陈旧)",len(d5c),pct(len(d5c),N))
 for th in (100,1000,10000):
     print(f"  MRR≥{th}:",sum(1 for r in rows if mrr(r)>=th),pct(sum(1 for r in rows if mrr(r)>=th),N),
@@ -35,10 +42,10 @@ for th in (100,1000,10000):
 print("MRR 中位(非零)",M(st.median([mrr(r) for r in rows if mrr(r)>0])),
       "30d 中位(非零)",M(st.median([l30(r) for r in rows if l30(r)>0])),
       "total 中位(非零)",M(st.median([tot(r) for r in rows if tot(r)>0])))
-print("陈旧头部",len(stale),"条, MRR",M(sum(mrr(r) for r in rows if r["slug"] in stale)),
-      pct(sum(mrr(r) for r in rows if r["slug"] in stale),sum(map(mrr,rows))))
-print("  其中 30d 也>0 的",sum(1 for r in rows if r["slug"] in stale and l30(r)>0),
-      " 30d 合计",M(sum(l30(r) for r in rows if r["slug"] in stale)))
+print("陈旧头部",len(stale),"条, MRR",M(sum(mrr(r) for r in rows if r[KEY] in stale)),
+      pct(sum(mrr(r) for r in rows if r[KEY] in stale),sum(map(mrr,rows))))
+print("  其中 30d 也>0 的",sum(1 for r in rows if r[KEY] in stale and l30(r)>0),
+      " 30d 合计",M(sum(l30(r) for r in rows if r[KEY] in stale)))
 print("mrr>0 但 30d==0:",sum(1 for r in rows if mrr(r)>0 and l30(r)==0))
 top1=sorted(map(mrr,rows),reverse=True)[:N//100]
 print("MRR top1% 占",pct(sum(top1),sum(map(mrr,rows))),"  30d top1%",pct(sum(sorted(map(l30,rows),reverse=True)[:N//100]),sum(map(l30,rows))))
@@ -72,7 +79,7 @@ print("  成立于 TrustMRR 上线(2025-10-31)之前的产品",pre,pct(pre,N))
 
 print("\n=== 2 AI vs 非AI ===")
 KW=("ai","gpt","llm","agent","copilot","generat","prompt","chatbot")
-isai=lambda r:any(k in f"{r.get('name','')} {r.get('description','')} {r.get('category','')}".lower() for k in KW)
+isai=lambda r: r["ai_related"] if ANON else any(k in f"{r.get('name','')} {r.get('description','')} {r.get('category','')}".lower() for k in KW)
 for cond,label in ((lambda r:True,"全体"),(lambda r:(age(r) or 99)<=12,"≤12月"),(lambda r:12<(age(r) or -1)<=24,"1–2年")):
     for nm,grp in (("AI",[r for r in rows if isai(r) and cond(r)]),("非AI",[r for r in rows if not isai(r) and cond(r)])):
         n=len(grp)
@@ -87,11 +94,12 @@ sm,sl=sum(map(mrr,rows)),sum(map(l30,rows))
 print("30d/MRR 全体",f"{sl/sm:.2f}x  非MRR份额 {pct(sl-sm,sl)}")
 print("  30d 最高且 mrr=0 的前 15：")
 for r in sorted([r for r in rows if mrr(r)==0],key=lambda r:-l30(r))[:15]:
-    print(f"    {r['name'][:28]:<30} 30d {M(l30(r)):>12}  total {M(tot(r)):>14}  {r.get('category')}  {r.get('country')}")
-plat={"gumroad"}
-ex=[r for r in rows if r["slug"] not in plat]
+    print(f"    {nm(r)[:28]:<30} 30d {M(l30(r)):>12}  total {M(tot(r)):>14}  {r.get('category')}  {r.get('country')}")
+# Gumroad 是全站最大的非订阅异常值。脱敏版里用它的哈希 id 指认。
+plat={"p_" + __import__("hashlib").sha256(b"trustmrr-census-2026-09-04gumroad").hexdigest()[:12]} if ANON else {"gumroad"}
+ex=[r for r in rows if r[KEY] not in plat]
 print("剔 Gumroad:",f"{sum(map(l30,ex))/sum(map(mrr,ex)):.2f}x 非MRR {pct(sum(map(l30,ex))-sum(map(mrr,ex)),sum(map(l30,ex)))}")
-ex2=[r for r in ex if r["slug"] not in stale]
+ex2=[r for r in ex if r[KEY] not in stale]
 print("再剔陈旧头部:",f"{sum(map(l30,ex2))/sum(map(mrr,ex2)):.2f}x 非MRR {pct(sum(map(l30,ex2))-sum(map(mrr,ex2)),sum(map(l30,ex2)))}")
 # 按产品：每个在赚的产品，其 30d 里超过 mrr 的部分
 earn=[r for r in rows if l30(r)>0]
@@ -110,7 +118,7 @@ print("  30d≥5k 的",len(h),"个里 mrr=0 的",sum(1 for r in h if mrr(r)==0),
 print("\n=== 4 创始人（用累计与 30d，不用 MRR） ===")
 byf=defaultdict(list)
 for r in rows:
-    if r.get("xHandle"): byf[r["xHandle"]].append(r)
+    if fid(r): byf[fid(r)].append(r)
 print("有 handle",sum(len(v) for v in byf.values()),pct(sum(len(v) for v in byf.values()),N),"去重",len(byf))
 multi={k:v for k,v in byf.items() if len(v)>1}
 print("≥2 产品的创始人",len(multi),pct(len(multi),len(byf)),"覆盖产品",sum(len(v) for v in multi.values()))
@@ -157,12 +165,13 @@ print("  国家数",len(byc))
 # CN 的头部
 cn=sorted(byc.get("CN",[]),key=lambda r:-l30(r))[:8]
 print("  CN 30d 前 8：")
-for r in cn: print(f"    {r['name'][:26]:<28} MRR {M(mrr(r)):>10} 30d {M(l30(r)):>10} total {M(tot(r)):>12} {r.get('category')} {'挂牌' if r.get('onSale') else ''}")
+for r in cn: print(f"    {nm(r)[:26]:<28} MRR {M(mrr(r)):>10} 30d {M(l30(r)):>10} total {M(tot(r)):>12} {r.get('category')} {'挂牌' if r.get('onSale') else ''}")
 # 中文创始人（名字含 CJK）
 import re
 cjk=re.compile(r'[一-鿿]')
-zh=[r for r in rows if cjk.search(r.get("xFounderName") or "") or cjk.search(r.get("description") or "")]
-print("  创始人名或描述含中文的产品",len(zh),"在赚",pct(sum(1 for r in zh if l30(r)>0),len(zh)),"30d≥5k",sum(1 for r in zh if l30(r)>=5000))
+zh=[] if ANON else [r for r in rows if cjk.search(r.get("xFounderName") or "") or cjk.search(r.get("description") or "")]
+if zh: print("  创始人名或描述含中文的产品",len(zh),"在赚",pct(sum(1 for r in zh if l30(r)>0),len(zh)),"30d≥5k",sum(1 for r in zh if l30(r)>=5000))
+else:  print("  中文创始人一节需要 name/description，脱敏数据集里没有。用自己的 key 跑 fetch.py 可复现。")
 
 print("\n=== 7 品类（30d 口径补充） ===")
 byk=defaultdict(list)

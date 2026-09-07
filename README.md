@@ -127,6 +127,13 @@ this repository ships the anonymized dataset rather than the raw pull.
 
 Not affiliated with TrustMRR. Conclusions do not represent the platform.
 
+## Verified
+
+The anonymized dataset reproduces the raw pull exactly. Every numeric token printed by
+`report_v2.py` is identical whether it reads `data/startups.jsonl` (raw, not published) or
+`data/startups-anon.jsonl` (published). The one exception is a single section on
+Chinese-language founders, which needs `name` and `description` and is skipped with a note.
+
 ## License
 
 Code under MIT. The data originates from TrustMRR's public API; rights remain with the platform
