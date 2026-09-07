@@ -7,7 +7,7 @@ All 10,150 listed products, pulled 2026-09-04. Write-up:
 [I pulled all 10,150 products on TrustMRR](https://mifanr.com/en/posts/trustmrr-census/)
 · [中文](https://mifanr.com/posts/trustmrr-census/)
 
-Every number in the post can be recomputed from this repository. If your figures differ from
+Every number in the post can be recomputed from this repository, except one: the 7.0% first-two-pages figure in the pagination note. Anonymization hashes product names, so the alphabetical page order that figure depends on is gone. If your figures differ from
 mine, [tell me](https://x.com/Mifanr).
 
 ## Why this exists
