@@ -1,0 +1,562 @@
+[
+ {
+  "slug": "stan",
+  "mrr": 3569654.22,
+  "days": 137,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "chatbase",
+  "mrr": 863631.66,
+  "days": 35,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "stealth-company-23",
+  "mrr": 747069.33,
+  "days": 113,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "superfruits",
+  "mrr": 424368.13,
+  "days": 21,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "bustem-inc",
+  "mrr": 396055.4,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "unnamed-company",
+  "mrr": 376856.25,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "rezi",
+  "mrr": 256829.92,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "kl23iod2mdka",
+  "mrr": 251299.92,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "1lookup",
+  "mrr": 235654.07,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "kibu",
+  "mrr": 234318.6,
+  "days": 138,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "cometly",
+  "mrr": 215404.33,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "stealth-venture-3",
+  "mrr": 205099.53,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "postiz",
+  "mrr": 198280.33,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "brand-on-demand-inc",
+  "mrr": 184249.83,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "anonymous-startup-25",
+  "mrr": 176635.13,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "hidden-business-12",
+  "mrr": 170391.42,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "medical-practice-medical-consulting-agency",
+  "mrr": 167624.77,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "stealth-company-17",
+  "mrr": 135899.31,
+  "days": 170,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "prosp",
+  "mrr": 128005,
+  "days": 211,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "omegleweb",
+  "mrr": 119221.57,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "tro-kik",
+  "mrr": 103568.19,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "big",
+  "mrr": 97033.58,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "stealth-venture-15",
+  "mrr": 92952.64,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "codedex",
+  "mrr": 87487.14,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "upscale-system-llc",
+  "mrr": 86629.67,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "aeo-engine",
+  "mrr": 85198.45,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "supergrow",
+  "mrr": 79478.71,
+  "days": 188,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "llm-gateway",
+  "mrr": 78384,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "b2bsaas",
+  "mrr": 76009.42,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "propgpt-ai-props-analysis",
+  "mrr": 72361.35500000003,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "ai-startup",
+  "mrr": 72337,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "teachizy-sas-maj-digital",
+  "mrr": 69120.66,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "vidai-llc",
+  "mrr": 66395.08,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "speel-co",
+  "mrr": 65843.04,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "gotall",
+  "mrr": 60931.997500000056,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "dropkiller",
+  "mrr": 60178.91,
+  "days": 20,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "project-a",
+  "mrr": 58054.63,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "dataexpert-techcreator",
+  "mrr": 57697.9,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "rankai",
+  "mrr": 56532.72,
+  "days": 36,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "stealth-02",
+  "mrr": 56495.414166666655,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "ai-smart-decor",
+  "mrr": 329.33,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "launchpoly",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "batman-founder-boilerplate",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "finishdraft",
+  "mrr": 6.24,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "vibe-learning",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "tradingview-magical-keyboard-shortcuts-extension",
+  "mrr": 19,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "octozia",
+  "mrr": 36.96,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "dripmint",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "plantzzz",
+  "mrr": 127.22,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "angel-match",
+  "mrr": 27495.8,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "dealfolio",
+  "mrr": 23.81,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "polish-ai",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "paddle-business-7",
+  "mrr": 0,
+  "days": 155,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "inkieai",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "feedbackfirst",
+  "mrr": 10.46,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "snipehour-lol",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "classyaction",
+  "mrr": 487.56,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "future-baby-image-generator",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "growingupvideo",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "stageproai",
+  "mrr": 408,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "botricai",
+  "mrr": 698.5,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "interactive-tailwind",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "liberty-drives",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "crossfolio",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "snaptheknot",
+  "mrr": 190.25,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "flaex",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "adremake",
+  "mrr": 0,
+  "days": 131,
+  "expired": true,
+  "err": null
+ },
+ {
+  "slug": "chatmocker-com",
+  "mrr": 10.05,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "hairdoo",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "buildcost-ai",
+  "mrr": 94.74,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "editit",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "handwriting-font-maker",
+  "mrr": 17.55,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "cardcontext",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "rival-vantage",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "omnylink",
+  "mrr": 10,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "confidential-startup-34",
+  "mrr": 876.44,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "naturalcamera",
+  "mrr": 933.7783333333332,
+  "days": 1,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "maedo",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "make-image",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ },
+ {
+  "slug": "chat-pilot",
+  "mrr": 0,
+  "days": 0,
+  "expired": false,
+  "err": null
+ }
+]

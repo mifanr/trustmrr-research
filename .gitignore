@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+
+# 原始抓取结果含全部产品名与创始人账号，包括 2,654 个从没赚到过钱的产品。
+# 按「失败者只做聚合，不点名」的原则，仓库只发脱敏版。
+# 有 API key 的人用 fetch.py 可以自己重新抓一份原始数据。
+data/startups.jsonl
+data/head_freshness.json
+data/census-report.txt
+
+__pycache__/
+*.pyc
+.DS_Store
